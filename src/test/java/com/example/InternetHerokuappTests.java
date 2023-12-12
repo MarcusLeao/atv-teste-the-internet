@@ -108,4 +108,59 @@ public class InternetHerokuappTests {
             driver.quit();
         }
     }
+
+
+    @Test
+    public void testHovers() {
+
+        driver.get("https://the-internet.herokuapp.com/hovers");
+        WebElement user1 = driver.findElement(By.cssSelector(".figure:nth-of-type(1)"));
+        Actions actions = new Actions(driver);
+        actions.moveToElement(user1).perform();
+
+        assertTrue(driver.findElement(By.cssSelector(".figure:nth-of-type(1) .figcaption")).isDisplayed());
+    }
+
+    @Test
+    public void testJavaScriptAlerts() {
+
+        driver.get("https://the-internet.herokuapp.com/javascript_alerts");
+        WebElement jsAlertButton = driver.findElement(By.cssSelector("button[onclick='jsAlert()']"));
+
+        jsAlertButton.click();
+        Alert alert = driver.switchTo().alert();
+        assertEquals("I am a JS Alert", alert.getText());
+        alert.accept();
+    }
+
+    @Test
+    public void testInfiniteScroll() {
+
+        driver.get("https://the-internet.herokuapp.com/infinite_scroll");
+        WebElement lastParagraph = driver.findElement(By.cssSelector(".jscroll-added:last-of-type"));
+
+        Actions actions = new Actions(driver);
+        actions.moveToElement(lastParagraph).perform();
+
+        assertTrue(lastParagraph.isDisplayed());
+    }
+
+    @Test
+    public void testJavaScriptError() {
+
+        driver.get("https://the-internet.herokuapp.com/javascript_error");
+
+    }
+
+    @Test
+    public void testDropdownSelection() {
+
+        driver.get("https://the-internet.herokuapp.com/dropdown");
+        WebElement dropdown = driver.findElement(By.id("dropdown"));
+
+        Select select = new Select(dropdown);
+        select.selectByVisibleText("Option 1");
+
+        assertEquals("Option 1", select.getFirstSelectedOption().getText());
+    }
 }
