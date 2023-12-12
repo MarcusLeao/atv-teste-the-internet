@@ -22,9 +22,7 @@ public class InternetHerokuappTests {
     @Before
     public void setUp() {
 
-        //Link para baixar o cromedriver
-        //https://edgedl.me.gvt1.com/edgedl/chrome/chrome-for-testing/120.0.6099.71/win64/chromedriver-win64.zip
-        System.setProperty("webdriver.chrome.driver", "C:/Users/marcu/Downloads/chromedriver-win64/chromedriver-win64/chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "libs/chromedriver.exe");
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
@@ -99,17 +97,6 @@ public class InternetHerokuappTests {
         assertEquals("You entered: ENTER", target.getText());
     }
 
-    
-
-    @After
-    public void tearDown() {
-
-        if (driver != null) {
-            driver.quit();
-        }
-    }
-
-
     @Test
     public void testHovers() {
 
@@ -162,5 +149,13 @@ public class InternetHerokuappTests {
         select.selectByVisibleText("Option 1");
 
         assertEquals("Option 1", select.getFirstSelectedOption().getText());
+    }
+    
+    @After
+    public void tearDown() {
+
+        if (driver != null) {
+            driver.quit();
+        }
     }
 }

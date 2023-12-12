@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.example.InternetHerokuappTests
 -------------------------------------------------------------------------------
-Tests run: 10, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 41.175 s - in com.example.InternetHerokuappTests
+Tests run: 10, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 36.551 s - in com.example.InternetHerokuappTests
